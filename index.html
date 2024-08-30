@@ -4,44 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>README Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>README Generator</h1>
-        <button id="autoFillBtn">Auto-Fill with Default Messages</button>
-        <form id="readmeForm">
-            <label for="projectName">Project Name:</label>
-            <input type="text" id="projectName" name="projectName" required>
+<body class="bg-gray-100 text-gray-900">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold text-center mb-8">README Generator</h1>
+        <form id="readmeForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="projectName" class="block text-gray-700 text-sm font-bold mb-2">Project Name:</label>
+                <input type="text" id="projectName" name="projectName" placeholder="Your Project Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
 
-            <label for="description">Project Description:</label>
-            <textarea id="description" name="description" required></textarea>
+            <div class="mb-4">
+                <label for="projectType" class="block text-gray-700 text-sm font-bold mb-2">Project Type:</label>
+                <select id="projectType" name="projectType" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Web Application">Web Application</option>
+                    <option value="Library/Framework">Library/Framework</option>
+                    <option value="CLI Tool">CLI Tool</option>
+                    <option value="API">API</option>
+                    <option value="Mobile App">Mobile App</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
 
-            <label for="installation">Installation Instructions:</label>
-            <textarea id="installation" name="installation"></textarea>
+            <div class="mb-4">
+                <label for="license" class="block text-gray-700 text-sm font-bold mb-2">License:</label>
+                <select id="license" name="license" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="MIT License">MIT License - A permissive license that is simple and easy to understand.</option>
+                    <option value="Apache License 2.0">Apache License 2.0 - A permissive license with an express grant of patent rights.</option>
+                    <option value="GPLv3">GPLv3 - A copyleft license that requires source code availability under the same terms.</option>
+                    <option value="BSD 3-Clause License">BSD 3-Clause License - Similar to the MIT License with additional provisions.</option>
+                    <option value="Creative Commons Zero (CC0)">Creative Commons Zero (CC0) - Allows your work to be used for any purpose without conditions.</option>
+                    <option value="Unlicense">Unlicense - A public domain equivalent license allowing unrestricted use.</option>
+                </select>
+                <p id="licenseExplanation" class="text-sm text-gray-600 mt-2"></p>
+            </div>
 
-            <label for="usage">Usage:</label>
-            <textarea id="usage" name="usage"></textarea>
-
-            <label for="features">Features:</label>
-            <textarea id="features" name="features"></textarea>
-
-            <label for="contributing">Contributing:</label>
-            <textarea id="contributing" name="contributing"></textarea>
-
-            <label for="license">License:</label>
-            <input type="text" id="license" name="license">
-
-            <label for="contact">Contact Information:</label>
-            <input type="text" id="contact" name="contact">
-
-            <button type="submit">Generate README</button>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Generate README</button>
+            </div>
         </form>
 
-        <div id="output">
-            <h2>Generated README:</h2>
-            <pre id="readmeOutput"></pre>
-            <button id="downloadBtn" style="display:none;">Download README</button>
+        <div id="output" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4">
+            <h2 class="text-2xl font-bold mb-4">Generated README:</h2>
+            <pre id="readmeOutput" class="bg-gray-100 p-4 rounded text-sm whitespace-pre-wrap"></pre>
+            <button id="downloadBtn" class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="display:none;">Download README</button>
         </div>
     </div>
     <script src="script.js"></script>
