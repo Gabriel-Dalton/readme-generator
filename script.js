@@ -2,36 +2,71 @@ document.getElementById('readmeForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const projectName = document.getElementById('projectName').value || 'My Project';
-    const description = document.getElementById('description').value || 'This project is designed to solve [problem] by providing [solution]. It is built using [technology/framework].';
-    const installation = document.getElementById('installation').value || '1. Clone the repository\n2. Navigate to the project directory\n3. Run `npm install` to install dependencies\n4. Run `npm start` to start the application';
-    const usage = document.getElementById('usage').value || 'To use this project, follow the installation instructions and then [additional steps for usage].';
-    const features = document.getElementById('features').value || '- Feature 1: [Describe feature 1]\n- Feature 2: [Describe feature 2]\n- Feature 3: [Describe feature 3]';
-    const contributing = document.getElementById('contributing').value || 'We welcome contributions! Please fork the repository and submit a pull request with your changes.';
-    const license = document.getElementById('license').value || 'This project is licensed under the MIT License - see the LICENSE file for details.';
-    const contact = document.getElementById('contact').value || 'For any questions or concerns, please contact [Your Name] at [Your Email].';
+    const projectType = document.getElementById('projectType').value;
+    const license = document.getElementById('license').value;
+
+    const generalDescription = `${projectName} is a ${projectType.toLowerCase()} that simplifies [describe what it simplifies]. It is built with [technologies used] and aims to provide [main goal of the project].`;
+    
+    const generalInstallation = `## Installation
+To install ${projectName}, follow these steps:
+1. Clone the repository:
+   \`\`\`
+   git clone https://github.com/yourusername/${projectName.toLowerCase().replace(/\s+/g, '-')}.git
+   \`\`\`
+2. Navigate to the project directory:
+   \`\`\`
+   cd ${projectName.toLowerCase().replace(/\s+/g, '-')}
+   \`\`\`
+3. Install the dependencies:
+   \`\`\`
+   npm install
+   \`\`\`
+4. Start the project:
+   \`\`\`
+   npm start
+   \`\`\`
+`;
+
+    const generalUsage = `## Usage
+Once installed, ${projectName} can be used to [describe main functionality]. For example, you can [give example usage].`;
+
+    const generalFeatures = `## Features
+${projectName} includes the following features:
+
+- **Ease of Use**: Intuitive interface and simple setup.
+- **Flexibility**: Easily customizable to fit your needs.
+- **Performance**: Optimized for fast and efficient operation.
+- **Cross-Platform**: Works seamlessly across different environments.`;
+
+    const contributing = `## Contributing
+We welcome contributions to ${projectName}! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes.
+4. Push to your branch.
+5. Open a pull request.`;
+
+    const contact = `## Contact
+For more information, questions, or feedback, please contact [Your Name] at [Your Email].`;
 
     const readmeContent = `
 # ${projectName}
 
 ## Description
-${description}
+${generalDescription}
 
-## Installation
-${installation}
+${generalInstallation}
 
-## Usage
-${usage}
+${generalUsage}
 
-## Features
-${features}
+${generalFeatures}
 
-## Contributing
 ${contributing}
 
 ## License
-${license}
+This project is licensed under the ${license} - see the LICENSE file for details.
 
-## Contact
 ${contact}
 `;
 
@@ -52,3 +87,10 @@ function downloadReadme(content, projectName) {
     a.click();
     URL.revokeObjectURL(url);
 }
+
+// License explanation update
+document.getElementById('license').addEventListener('change', function() {
+    const licenseExplanation = document.getElementById('licenseExplanation');
+    const selectedOption = this.options[this.selectedIndex];
+    licenseExplanation.textContent = selectedOption.text.split(' - ')[1];
+});
