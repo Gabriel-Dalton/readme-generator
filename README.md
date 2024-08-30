@@ -4,6 +4,9 @@
 
 README Generator is a web-based tool designed to help developers quickly create comprehensive README files for their GitHub projects. The platform allows users to input minimal information, such as the project name and license, and automatically generates a well-structured README with sections like installation, usage, features, and more. This tool is perfect for developers who want to save time and ensure consistency across their projects.
 
+![image](https://github.com/user-attachments/assets/2d05c0b5-b3b6-4ddd-930c-f879b8f7d989)
+
+
 ## Features
 
 - **Minimal Input Required**: Users only need to provide the project name, type, and license. The rest is automatically generated.
